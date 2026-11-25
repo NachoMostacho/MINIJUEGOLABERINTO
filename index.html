@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laberinto | Minijuego Clase POO</title>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <main class="juego">
+    <header>
+      <p class="etiqueta">Minijuego · José Ignacio López Estrada - 204611</p>
+      <h1>Laberinto<span>.</span></h1>
+      <p class="descripcion">Encuentra la salida y supera los cinco niveles.</p>
+    </header>
+
+    <section class="marcador" aria-label="Progreso del juego">
+      <div><span class="dato">NIVEL</span><strong id="nivel">1 / 5</strong></div>
+      <div class="progreso" id="progreso" aria-label="Niveles completados"></div>
+      <div class="movimientos"><span class="dato">MOVIMIENTOS</span><strong id="movimientos">0</strong></div>
+    </section>
+
+    <div class="tablero-marco">
+      <div id="laberinto" class="laberinto" role="img" aria-label="Mapa del laberinto"></div>
+    </div>
+
+    <div class="leyenda">
+      <span><i class="muestra jugador"></i> Jugador</span>
+      <span><i class="muestra meta"></i> Salida</span>
+      <span><i class="muestra muro"></i> Muro</span>
+    </div>
+    <p id="mensaje" class="mensaje" role="status" aria-live="polite">¡Encuentra la salida!</p>
+
+    <div class="controles" aria-label="Controles de movimiento">
+
+      <button class="arriba" data-dx="0" data-dy="-1" aria-label="Mover arriba">↑</button>
+      <button class="izquierda" data-dx="-1" data-dy="0" aria-label="Mover izquierda">←</button>
+      <button class="abajo" data-dx="0" data-dy="1" aria-label="Mover abajo">↓</button>
+      <button class="derecha" data-dx="1" data-dy="0" aria-label="Mover derecha">→</button>
+    
+    </div>
+    <p class="ayuda">Usa las flechas del teclado, WASD o los botones.</p>
+    <div class="acciones">
+      <button id="reiniciar" class="secundario">Reiniciar nivel</button>
+      <button id="siguiente" class="primario" hidden>Siguiente nivel</button>
+    </div>
+
+  </main>
+
+</body>
+
+<script src="js/main.js"></script>
+</html>

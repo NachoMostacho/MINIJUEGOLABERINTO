@@ -1,0 +1,328 @@
+:root {
+  /* Semestre 2026-2 */
+  --morado-oscuro: #211044;
+  --morado: #32185C;
+  --lima: #D9FF43;
+  --turquesa: #54F0DF;
+  --coral: #FF784F;
+  --blanco: #F8FAFC;
+  --lavanda: #E3D9F5;
+  --blanco-puro: #FFFFFF;
+  --gris-azulado: #F2F7FA;
+  --gris-lavanda: #D3CDE3;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--morado-oscuro);
+  color: var(--blanco);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.juego {
+  width: min(100%, 480px);
+  padding: 24px;
+  background: var(--morado);
+  border: 1px solid var(--gris-lavanda);
+  border-radius: 24px;
+  text-align: center;
+}
+
+.etiqueta {
+     margin: 0; 
+     color: var(--turquesa); 
+     font-size: 11px; 
+     font-weight: bold; 
+     letter-spacing: 2px; 
+}
+
+h1 { 
+    margin: 8px 0; 
+    font-size: clamp(32px, 7vw, 46px); 
+    letter-spacing: -2px; 
+}
+h1 span { 
+    color: var(--lima); 
+}
+
+.descripcion { 
+    margin: 0 0 20px; 
+    color: var(--lavanda); 
+    font-size: 14px; 
+}
+
+.marcador { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 12px; 
+    padding: 12px; 
+    margin-bottom: 14px;
+    border-radius: 12px; 
+    background: var(--morado-oscuro); 
+    text-align: left; 
+}
+
+.dato { 
+    display: block; 
+    margin-bottom: 4px; 
+    color: var(--lavanda); 
+    font-size: 10px; 
+    letter-spacing: 1px; 
+}
+
+.marcador strong { 
+    font-size: 19px; 
+}
+
+.movimientos { 
+    text-align: right; 
+}
+
+.progreso { 
+    display: flex; 
+    gap: 4px; 
+}
+
+.paso { 
+    width: 13px; 
+    height: 7px; 
+    border-radius: 4px; 
+    background: var(--gris-lavanda); 
+}
+
+.paso.actual { 
+    background: var(--turquesa); 
+}
+
+.paso.completo { 
+    background: var(--lima); 
+}
+
+.tablero-marco { 
+    background: var(--morado-oscuro); 
+    border: 2px solid var(--turquesa); 
+    border-radius: 14px; padding: 8px; 
+}
+
+.laberinto { 
+    display: grid; 
+    width: 100%; 
+    aspect-ratio: 1; 
+    gap: 1px; 
+    background: var(--gris-lavanda); 
+    border-radius: 7px; 
+    overflow: hidden; 
+}
+
+.celda { 
+    min-width: 0; 
+    min-height: 0; 
+    background: var(--blanco); 
+    display: grid; 
+    place-items: center; 
+}
+
+.muro { 
+    background: var(--morado-oscuro); 
+}
+
+.meta { 
+    background: var(--lima); 
+}
+
+.celda.meta::after { 
+    content: ''; 
+    width: 45%; 
+    height: 45%; 
+    border: 2px solid var(--morado-oscuro); 
+    transform: rotate(45deg); 
+}
+
+.jugador { 
+    background: var(--turquesa); 
+}
+
+.celda.jugador::after { 
+    content: ''; 
+    width: 64%; 
+    height: 64%; 
+    background: var(--turquesa); 
+    border: 2px solid var(--morado-oscuro);
+    border-radius: 50%; 
+}
+
+.celda.jugador { 
+    background: var(--blanco); 
+}
+
+.celda.jugador.meta { 
+    background: var(--lima); 
+}
+
+.celda.jugador.meta::after { 
+    transform: none; 
+}
+
+.leyenda { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; gap: 16px; 
+    margin: 13px 0; 
+    font-size: 12px; 
+    color: var(--lavanda); 
+}
+
+.leyenda span { 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+}
+
+.muestra { 
+    width: 12px; 
+    height: 12px; 
+    display: inline-block; 
+    border: 1px solid var(--gris-lavanda); 
+    border-radius: 3px; 
+}
+
+.muestra.jugador { 
+    border-radius: 50%; 
+}
+
+.mensaje { 
+    min-height: 20px; 
+    margin: 10px 0; 
+    font-size: 14px; 
+    font-weight: bold; 
+    color: var(--turquesa); 
+}
+
+.mensaje.exito { 
+    color: var(--lima); 
+}
+
+.controles { 
+    display: grid; 
+    grid-template-columns: repeat(3, 44px); 
+    grid-template-rows: repeat(2, 40px); 
+    justify-content: center; gap: 5px; 
+}
+
+button { 
+    font: inherit; 
+    font-weight: bold; 
+    cursor: pointer; 
+    border: 0; 
+    border-radius: 8px; 
+    padding: 10px 14px; 
+    color: var(--morado-oscuro); 
+    background: var(--lavanda); 
+}
+
+button:focus-visible { 
+    outline: 3px solid var(--coral); 
+    outline-offset: 3px; 
+}
+
+button:active:not(:disabled) { 
+    transform: scale(.95); 
+}
+
+button:disabled {
+    cursor: default; 
+    background: var(--gris-lavanda); 
+    color: var(--morado); 
+}
+
+.controles button { 
+    padding: 0; 
+    font-size: 24px; 
+    background: var(--lavanda); 
+    touch-action: manipulation; 
+}
+
+.controles button:hover:not(:disabled) { 
+    background: var(--turquesa); 
+}
+
+.controles button:disabled { 
+    background: var(--gris-lavanda); 
+}
+
+.arriba { 
+    grid-column: 2; 
+    grid-row: 1; 
+}
+
+.izquierda { 
+    grid-column: 1; 
+    grid-row: 2; 
+}
+
+.abajo { 
+    grid-column: 2; 
+    grid-row: 2; 
+}
+
+.derecha { 
+    grid-column: 3; 
+    grid-row: 2; 
+}
+
+.ayuda { 
+    font-size: 12px; 
+    color: var(--lavanda); 
+    margin: 12px 0; 
+}
+
+.acciones { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 8px; 
+}
+
+.acciones button { 
+    font-size: 13px; 
+}
+
+.secundario { 
+    background: var(--gris-azulado); 
+}
+
+.secundario:hover { 
+    background: var(--gris-lavanda); 
+}
+
+.primario { 
+    background: var(--lima); 
+}
+
+.primario:hover { 
+    background: var(--turquesa); 
+}
+
+@media (max-width: 380px) {
+  body 
+{ 
+        padding: 10px;
+    }
+
+        .juego { 
+        padding: 15px; 
+    }
+        .marcador { 
+        gap: 5px; 
+    }
+
+        .paso { 
+        width: 9px; 
+    }
+}
